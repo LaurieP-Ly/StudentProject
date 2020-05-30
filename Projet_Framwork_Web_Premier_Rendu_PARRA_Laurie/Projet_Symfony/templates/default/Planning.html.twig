@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Fitness Agence{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/Style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Anton|Roboto+Mono&display=swap" rel="stylesheet">
+    {% endblock %}
+</head>
+<body class="bodyPlanning">
+{% block body %}
+    {% include "header.html.twig" %}
+
+    <h2 class="titrePlanning"> {{ planning[0].idSalle }}</h2>
+    <a href="{{ path('salle', {'id':idsalle}) }}">
+
+        <img src="{{asset ('img/icons/iconmonstr-arrow-64.svg')}}" class="arrow">
+
+    </a>
+
+    <article class="plannning">
+
+
+        <ul id="planning">
+
+            {% for h in planning %}
+
+            <li>
+                <h2>{{h.jour}}---{{h.heure}}</h2>
+                <p>{{h.idcours }} ----
+                {% if not app.user %}
+                <a href="{{ path('login') }}"> Connectez-vous </a> pour reserver !</p>
+                {% else %}
+
+                <a href="{{ path('reserver', { 'id': h.id }) }}" > Réserver ! </a>
+                 {%  endif %}
+
+            </li>
+
+            {% endfor %}
+
+
+
+
+
+
+
+
+
+        </ul>
+
+
+
+
+
+    </article>
+    {% include "footer.html.twig" %}
+{% endblock %}
+</body>
+</html>

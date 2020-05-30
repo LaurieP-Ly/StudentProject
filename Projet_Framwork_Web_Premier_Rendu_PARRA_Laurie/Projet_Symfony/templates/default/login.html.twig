@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Fitness Agence{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/Style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Anton|Roboto+Mono&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
+    {% endblock %}
+</head>
+<body class="bodyLogin">
+{% block body %}
+    {% include "header.html.twig" %}
+    <main class="mainLogin">
+
+        <article class="login-article">
+            <h1> CONNEXION : </h1>
+
+            <form action="{{ path('login') }}" method="post">
+                <div class="form_groupe">
+                    <input placeholder=" Entrez votre adresse email" required name="_username" type="text" class="form_control">
+                </div>
+                <div class="form_groupe">
+                    <input placeholder=" Entrez votre mot de passe" required name="_password" type="password" class="form_control">
+                </div>
+                <div class="form_groupe">
+                    <button type="submit" class="boutton_succes"> Se connecter </button>
+                </div>
+
+            </form>
+
+
+            <p>Vous n'avez pas de compte ? </p><a href="{{ path('AjoutClient') }}"> Créez-vous un compte ! </a>
+        </article>
+        <article>
+            <img alt= " training " src={{ asset('img/training-828764_1920.jpg') }} >
+        </article>
+
+    </main>
+
+
+
+
+
+    {% include "footer.html.twig" %}
+{%  endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Fitness Agence{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/Style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Anton|Roboto+Mono&display=swap" rel="stylesheet">
+    {% endblock %}
+</head>
+<body class="bodyErreur">
+{% block body %}
+    {% include "header.html.twig" %}
+    <main class="erreurMain">
+        <h1>Oups ! </h1>
+        <div>
+            <p> Vous ne pouvais pas reserver 2 fois la même horaire.</p>
+            <a href="{{ path('planning',{'id':id }) }} "> Retourner au planning </a>
+
+        </div>
+    </main>
+
+
+{% endblock %}
+
+
+</body>

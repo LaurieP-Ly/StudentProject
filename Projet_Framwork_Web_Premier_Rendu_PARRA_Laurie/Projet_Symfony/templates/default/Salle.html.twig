@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{salle.nom}}{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/Style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Anton|Roboto+Mono&display=swap" rel="stylesheet">
+    {% endblock %}
+</head>
+<body  class="bodySalle" >
+{% block body %}
+    {% include "header.html.twig" %}
+
+    <a href="{{ path('salles') }}"><img src="{{ asset('img/icons/iconmonstr-arrow-64.svg') }}" class="arrow"></a>
+
+    <article class="articleSalle">
+        <h2 class="titreSalle">{{salle.nom}} </h2>
+        <div class="descriptionSalle">
+
+            <img class="image" src="{{asset( salle.imgsalle)}}">
+            <div class="description">
+                <p>{{salle.description}}</p>
+                <p><a class="boutonPlanning" href="{{path('planning', { 'id': salle.id })}}">Voir le planning des cours collectifs</a></p>
+            </div>
+            <div>
+                <img src="{{ asset('img/icons/iconmonstr-location-1.svg') }}"><p> {{salle.adresse}}</p>
+                <img src="{{ asset('img/icons/iconmonstr-time-3.svg') }}"><p> {{salle.horaires}}</p>
+            </div>
+
+        </div>
+
+
+    </article>
+    {% include "footer.html.twig" %}
+{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

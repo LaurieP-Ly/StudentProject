@@ -1,0 +1,27 @@
+<header class="titre">
+
+
+
+
+    <ul class="ul_navigation">
+        <li><a href="{{ path('default') }}"><h1 > FITNESS AGENCE </h1></a></li>
+
+        <li><a class="menu" href="{{ path('default') }}"  >Accueil</a></li>
+        <li><a class="menu" href="{{ path('salles') }}" >Salles</a></li>
+        {% if not app.user %}
+            <li><a class="menu" href="{{ path ('login') }}">Se connecter</a></li>
+        {%  else %}
+            <li><a class="menu" href="{{ path('profil', {'email': app.user.Username}) }}">Profil</a></li>
+            <li><a class="menu" href="{{ path('panier') }}"> Panier </a></li>
+        {% endif %}
+
+
+
+    </ul>
+
+
+
+
+
+
+</header>

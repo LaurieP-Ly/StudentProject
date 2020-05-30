@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Fitness Agence{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/Style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Anton|Roboto+Mono&display=swap" rel="stylesheet">
+    {% endblock %}
+</head>
+<body class="bodyProfil">
+{% block body %}
+    {% include "header.html.twig" %}
+    <main class="mainProfil">
+        <div class="AvatarDiv">
+            <h1> Votre profil </h1>
+            <img src="{{ asset('img/'~ app.user.PathAvatar)}}" alt="" class="avatar">
+
+        </div>
+
+        <div class="profilDiv">
+            <h3> Bonjour {{ app.user.Surnom }}</h3>
+
+
+
+            <p>Prêt(e) à faire du sport ? </p>
+
+
+
+
+            <article>
+                {% if (reservationsEnr | length >0) %}
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Salle</th>
+                            <th>Jour</th>
+                            <th>Heure</th>
+                            <th>Cours</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for reservation in reservationsEnr %}
+
+                            {% for r in reservation %}
+
+                                <tr>
+                                    <td><strong><a href="{{ path("salle", {'id':r.idsalle.Id}) }}">{{ r.idsalle.Nom}}</a></strong></td>
+                                    <td>{{ r.jour }}</td>
+                                    <td>{{ r.heure }}</td>
+                                    <td>{{ r.idcours }}</td>
+                                    <td><a href="{{ path('ProfilRemove', {'idH':r.id, 'idC':Email}) }}"> Supprimer</a></td>
+
+                                </tr>
+
+
+
+                            {%  endfor %}
+
+
+
+                        {%  endfor %}
+                        </tbody>
+                    </table>
+                    <p><a href="{{ path('salles') }}"> Réserver d'autres cours !  </a></p>
+                {% else %}
+                    <p> Vous n'avez valider aucune réservations </p>
+                    <p><a href="{{ path('salles') }}"> Réservez des cours !  </a></p>
+                {%  endif %}
+
+            </article>
+
+
+
+
+
+
+
+        </div>
+
+        <a href="{{ path('deconnexion') }}" class="deconnexion"> Se déconnecter </a>
+    </main>
+
+    {% include "footer.html.twig" %}
+{% endblock %}

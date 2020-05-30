@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Fitness Agence{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/Style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Anton|Roboto+Mono&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
+
+    {% endblock %}
+</head>
+<body class="bodyAjout">
+{% block body %}
+
+    {% include "header.html.twig" %}
+
+    <div id="compte">
+        <h2> Créez-vous un compte !  </h2>
+            <div class="compte_compte">
+                {{ form_start(form) }}
+
+
+                {{ form_row(form.username, {'label': 'Email', 'attr': {'placeholder': 'Entrez votre email ex: gentlePizza@jelly.com'}}) }}
+                {{ form_row(form.surnom, {'label': 'Surnom', 'attr': {'placeholder': 'Entrez un surnom ex: HappyRabbit'}}) }}
+                {{ form_row(form.password, {'label': 'Mot de passe', 'attr': {'placeholder': 'Entrez un mot de passe '}}) }}
+                {{ form_row(form.nom, {'label': 'Nom', 'attr': {'placeholder': 'Entrez votre nom'}}) }}
+                {{ form_row(form.prenom, {'label': 'Prenom', 'attr': {'placeholder': 'Entrez votre prenom'}}) }}
+                {{ form_row(form.birthdate, {'label': 'Date de naissance'}) }}
+                {{ form_row(form.adresse, {'label': 'Adresse', 'attr': {'placeholder': 'Entrez votre adresse'}}) }}
+                {{ form_row(form.codePostale, {'label': 'Code Postale', 'attr': {'placeholder': 'Entrez votre code postal'}}) }}
+                {{ form_row(form.ville, {'label': 'Ville', 'attr': {'placeholder': 'Entrez votre ville'}}) }}
+                {{ form_row(form.civilite, {'label': 'Civilité', 'attr': {'placeholder': 'M/Mlle/Mme'}}) }}
+                {{ form_row(form.telephone, {'label': 'Téléphone', 'attr': {'placeholder': 'ex : 05-12-12-12-11'}}) }}
+                {{ form_row(form.pays, {'label': 'Pays', 'attr': {'placeholder': 'Entrez votre pays'}}) }}
+                {{ form_row(form.avatar, {'label': 'Avatar'}) }}
+            </div>
+
+
+
+
+    <button type="submit" class="button">Créez votre compte ! </button>
+    {{ form_end(form) }}
+
+    </div>
+    {% include "footer.html.twig" %}
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>
+
+
+
+
+
+

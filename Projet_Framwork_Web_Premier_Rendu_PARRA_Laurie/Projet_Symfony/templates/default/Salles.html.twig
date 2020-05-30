@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Salles{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/Style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Anton|Roboto+Mono&display=swap" rel="stylesheet">
+
+    {% endblock %}
+</head>
+<body class="bodyPageSalles">
+{% block body %}
+    {% include "header.html.twig" %}
+
+    <article class="Fondsalles">
+
+        <ul class="salles">
+            {% for s in Salles %}
+                <li>
+                    <a href="{{ path('salle',{'id':s.id }) }} ">
+                        <fieldset>
+                            <legend>
+                                <p> {{ s.nom }}</p>
+                            </legend>
+                            <img src=" {{ asset( s.imgsalle ) }} ">
+
+
+                        </fieldset>
+                    </a>
+                </li>
+
+            {% endfor %}
+
+
+        </ul>
+    </article>
+    {% include "footer.html.twig" %}
+{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
